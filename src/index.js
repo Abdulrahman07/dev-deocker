@@ -10,7 +10,7 @@ const app = express();
 const REDIS_PORT = 6379;
 const REDIS_HOST = "redis";
 
-const client = redis
+redis
   .createClient({
     url: `redis://@${REDIS_HOST}:${REDIS_PORT}`,
   })
@@ -30,7 +30,7 @@ mongoose
   .catch((err) => console.log("Failed to connect to db:", err));
 
 // Connect Postges
-require("../prisma/client");
+// require("../prisma/client");
 
 app.get("/", (req, res) => res.send("<h1>This endpoint for testing!<h1/>"));
 app.listen(PORT, () => console.log(`The server is runing on port ${PORT}`));
