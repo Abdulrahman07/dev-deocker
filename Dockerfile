@@ -1,20 +1,20 @@
-FROM node:21 as base
+FROM node:21-alpine AS base
 
 WORKDIR /app
-COPY package.json .
+COPY package.json package-lock.json .
 
-FROM base as development
+# ===== DEVELOPMENT STAGE =====
+FROM base AS development
 
 RUN npm install
 COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "start-dev"]
 
-FROM base as production
+# ===== PRODUCTION STAGE =====
+FROM base AS production
 
-WORKDIR /app
-COPY package.json .
-RUN npm install --only=production
+RUN npm ci --omit=dev
 COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
