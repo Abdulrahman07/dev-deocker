@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const redis = require("redis");
+const os = require("os");
 
 // Init app
 const PORT = process.env.PORT || 3000;
@@ -32,5 +33,9 @@ mongoose
 // Connect Postges
 // require("../prisma/client");
 
-app.get("/", (req, res) => res.send("<h1>Test docker hub.<h1/>"));
+app.get("/", (req, res) => {
+  // To test load balancing using nginx
+  console.log(`Traffic from ${os.hostname}`)
+  res.send("<h1>Test docker hub.<h1/>");
+});
 app.listen(PORT, () => console.log(`The server is runing on port ${PORT}`));
