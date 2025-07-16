@@ -32,5 +32,5 @@ mongoose
 // Connect Postges
 // require("../prisma/client");
 
-app.get("/", (req, res) => res.send("<h1>This endpoint for testing!<h1/>"));
+app.get("/", (req, res) => res.send("<h1>Test docker hub.<h1/>"));
 app.listen(PORT, () => console.log(`The server is runing on port ${PORT}`));

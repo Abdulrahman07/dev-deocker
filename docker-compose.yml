@@ -1,6 +1,7 @@
 version: "3"
 services:
   node-app:
+    image: abdlrahman07/dev-docker
     container_name: node-app-container
     ports:
       - "3000:3000"
